@@ -81,12 +81,22 @@ function App() {
 
       <hr style={{ margin: '30px 0' }} />
 
-      {/* Tutaj wyświetlimy raport */}
+      {/* === NOWA, POPRAWIONA SEKCJA RAPORTU === */}
       <h2>Twój Raport:</h2>
-      <div 
-        style={{ border: '1px solid #ccc', background: '#f9f9f9' }}
-        dangerouslySetInnerHTML={{ __html: reportHtml }} 
-      />
+      {reportHtml && (
+        <iframe
+          srcDoc={reportHtml} // Wczytujemy HTML do "wnętrza" ramki
+          title="Raport Statystyczny"
+          sandbox="allow-scripts" // Kluczowe: pozwalamy na działanie skryptów w ramce
+          style={{
+            width: '100%',
+            height: '800px', // Możemy ustawić wysokość na stałe
+            border: '1px solid #ccc',
+          }}
+          frameBorder="0"
+        />
+      )}
+      {/* Koniec zmian */}
     </div>
   );
 }
